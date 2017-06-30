@@ -6,7 +6,7 @@ public class playerCollision : MonoBehaviour {
 
     public Rigidbody2D rb;
     public bool stop = false;
-    public float PlayerDelayDuration = 1.0f;
+    public float PlayerDelayDuration = 0.2f;
 
     private void Start()
     {
