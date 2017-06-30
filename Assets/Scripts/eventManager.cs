@@ -16,7 +16,7 @@ public class eventManager : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        //if(playerCollScript.stop)
+        if(playerCollScript.stop)
         {
             return;
         }
