@@ -6,19 +6,22 @@ public class CameraController : MonoBehaviour
 {
 
     public Transform lookAt = null;
-    public float smoothSpeed = 20f;
+    public float smoothSpeed = 5f;
 
     private Vector3 offset;
     private Vector3 velocity = Vector3.zero;
 
     private void Start()
     {
+        //Set the cameras offset by the cameras world position away from the target
         offset = this.transform.position - lookAt.transform.position;    
     }
 
     private void LateUpdate()
     {
+        //Lookat = new transform to lerp towards 
         Vector3 targetPos = lookAt.transform.position + offset; 
+        //smooth follow towards new target position
         this.transform.position = Vector3.Lerp(this.transform.position ,targetPos, smoothSpeed * Time.deltaTime);
     }
 
