@@ -4,26 +4,27 @@ using UnityEngine;
 
 public class eventManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    private GameObject playerCollider;
+    private playerCollision playerCollScript;
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    private void Start()
+    {
+        playerCollider = GameObject.Find("Player");
+        playerCollScript = playerCollider.GetComponent<playerCollision>();
+    }
+
+    // Update is called once per frame
+    void Update () {
+
+        //if(playerCollScript.stop)
+        {
+            return;
+        }
+
         float horizontal = Input.GetAxisRaw("Horizontal");
 
         Vector3 movement = new Vector3(horizontal, 0, 0);
 
         this.transform.position += movement * Time.deltaTime;
 	}
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.collider.tag == "Obstacle")
-        {
-            
-            Destroy(collision.gameObject);
-        }
-    }
 }
