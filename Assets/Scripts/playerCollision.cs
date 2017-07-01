@@ -7,21 +7,17 @@ public class playerCollision : MonoBehaviour {
     public SpriteRenderer rend;
     public bool stop = false;
     public float PlayerDelayDuration = 0.2f;
-    public int timerSeconds = 6;
     public float flashSpeed = 5f;
     private bool damaged = false;
+    bool damn = false;
+    private int soulCount = 0;
 
-    playerHealth pHealth;
-
-    private void Awake()
-    {
-        pHealth = GetComponent<playerHealth>();
-    }
+    soulFollow soulPickup;
 
     private void Start()
     {
         rend = GetComponent<SpriteRenderer>();
-        rend.enabled = true;
+        soulPickup = GetComponent<soulFollow>();
     }
 
     private void Update()
@@ -51,8 +47,17 @@ public class playerCollision : MonoBehaviour {
         {
             damaged = true;
             Destroy(collision.gameObject);
-            pHealth.TakeDamage(10);
             StartCoroutine(delayOnCollision());
         }
+    }
+
+    public int checkSlots()
+    {
+        return soulCount;
+    }
+
+    public void slotFilled()
+    {
+        soulCount++;
     }
 }
