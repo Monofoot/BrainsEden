@@ -9,7 +9,7 @@ public class playerCollision : MonoBehaviour {
     public float PlayerDelayDuration = 0.2f;
     public float flashSpeed = 5f;
     private bool damaged = false;
-    private int soulCount = 0;
+    public int soulCount = 0;
 
     private void Start()
     {
