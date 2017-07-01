@@ -4,34 +4,34 @@ using UnityEngine;
 
 public class heavenCollision : MonoBehaviour {
 
-    private float delayDuration = 2.0f;
+    private float delayDuration = 3.0f;
     private bool inTrigger = false;
 
     IEnumerator delay()
     {
+        inTrigger = true;
         yield return new WaitForSeconds(delayDuration);
+        if (inTrigger)
+        {
+            GameObject[] souls = GameObject.FindGameObjectsWithTag("SoulPickedUp");
+
+            foreach (GameObject soul in souls)
+            {
+                Destroy(soul);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "SoulPickedUp")
+        if (collision.tag == "Player")
         {
-            inTrigger = true;
-
             StartCoroutine(delay());
-
-            if(inTrigger)
-            {
-                Destroy(collision);
-            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "SoulPickedUp")
-        {
-            inTrigger = false;
-        }
+        inTrigger = false;
     }
 }
