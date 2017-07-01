@@ -28,16 +28,19 @@ public class soulFollow : MonoBehaviour {
             {
                 transform.position = holdSlot1.transform.position;
                 transform.localScale = holdSlot1.transform.lossyScale;
+                transform.gameObject.tag = "SoulPickedUp";
             }
             else if (soulCount == 2)
             {
                 transform.position = holdSlot2.transform.position;
                 transform.localScale = holdSlot2.transform.lossyScale;
+                transform.gameObject.tag = "SoulPickedUp";
             }
             else if (soulCount == 3)
             {
                 transform.position = holdSlot3.transform.position;
                 transform.localScale = holdSlot3.transform.lossyScale;
+                transform.gameObject.tag = "SoulPickedUp";
             }
         }
     }

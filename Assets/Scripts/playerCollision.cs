@@ -24,12 +24,11 @@ public class playerCollision : MonoBehaviour {
     {
         if (damaged)
         {
-
-            rend.color = Color.white;
+            rend.color = Color.red;
         }
         else
         {
-            rend.color = Color.Lerp(rend.color, Color.red, flashSpeed * Time.deltaTime);
+            rend.color = Color.Lerp(rend.color, Color.white, flashSpeed * Time.deltaTime);
         }
         damaged = false;
     }
@@ -47,6 +46,17 @@ public class playerCollision : MonoBehaviour {
         {
             damaged = true;
             Destroy(collision.gameObject);
+
+            if(soulCount > 0)
+            {
+                GameObject[] souls = GameObject.FindGameObjectsWithTag("SoulPickedUp");
+
+                foreach(GameObject soul in souls)
+                {
+                    Destroy(soul);
+                }
+            }
+
             StartCoroutine(delayOnCollision());
         }
     }
