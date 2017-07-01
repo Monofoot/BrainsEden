@@ -18,6 +18,7 @@ public class characterMovementLR : MonoBehaviour
         rigBod = GetComponent<Rigidbody2D>();
         playerCollider = GameObject.Find("Player");
         playerCollScript = playerCollider.GetComponent<playerCollision>();
+
     }
 
     // Update is called once per frame
@@ -43,10 +44,4 @@ public class characterMovementLR : MonoBehaviour
 
 
     }
-    
-
-
-
-
-
 }
