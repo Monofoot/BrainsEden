@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class RemoveOffScreen : MonoBehaviour {
 
+    private BackgroundGenerator BG;
     private bool hasAppeared;
     private SpriteRenderer rnd;
 
     // Use this for initialization
     void Start() {
+        BG = GetComponentInParent<BackgroundGenerator>();
         rnd = GetComponent<SpriteRenderer>();
         hasAppeared = false;
         //Check if element has appeared in the camera 
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         if (rnd.isVisible)
         {
@@ -28,8 +30,12 @@ public class RemoveOffScreen : MonoBehaviour {
         //if element has been on screen and is no longer visible on screen
         if (hasAppeared)
         {
+            BG.GenerateNewTile();
             //Destoy the attached gameobject
-                Destroy(this.gameObject);
+            Destroy(this.gameObject);
+           
         }
 	}
+
+  
 }

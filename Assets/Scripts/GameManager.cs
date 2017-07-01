@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
+    [HideInInspector]
     public BackgroundGenerator bgGen;
+    public RemoveOffScreen remov;
 
     private int level = 3;
+ 
     // Use this for initialization
 
     void Awake ()
     {
         bgGen = GetComponent<BackgroundGenerator>();
+        remov = GetComponentInChildren<RemoveOffScreen>();
         InitGame();
 	}
 	
@@ -20,8 +24,4 @@ public class GameManager : MonoBehaviour {
         bgGen.SetupScene(level);
     }
 
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

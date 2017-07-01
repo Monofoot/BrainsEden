@@ -10,26 +10,36 @@ public class BackgroundGenerator : MonoBehaviour {
 
     private int tilesGenerated = 1;
     private Transform boardHolder;
+    private Transform gameManager;
+    private GameObject toInstantiate;
+    private GameObject instance;
+
     private List<Vector3> gridPositions = new List<Vector3>();
     private float[] offsets;
 
     //Create game object that will hold the generated game level
     void BoardSetup()
     {
+        gameManager = GetComponent<GameManager>().transform;
         boardHolder = new GameObject("Board").transform;
-
+        boardHolder.transform.SetParent(gameManager);
         for (int i = 0; i < 10; i++)
         {
-            //Create a random number between 0 and tile size index
-            GameObject toInstantiate = backgroundTiles[Random.Range(0, backgroundTiles.Length)];
-            //Spawn background tile at an offset from the prevous tile 
-         
-            GameObject instance = Instantiate(toInstantiate, new Vector3(tilesGenerated * toInstantiate.GetComponent<RectTransform>().rect.width, 0f), Quaternion.identity) as GameObject;
-            
-                //parent objects to Board holder to make neater inside unity 
-            instance.transform.SetParent(boardHolder);
-            tilesGenerated++;
+            GenerateNewTile();
         }
+    }
+
+    public void GenerateNewTile()
+    {
+        //Create a random number between 0 and tile size index
+        toInstantiate = backgroundTiles[Random.Range(0, backgroundTiles.Length)];
+        //Spawn background tile at an offset from the prevous tile 
+
+         instance = Instantiate(toInstantiate, new Vector3(tilesGenerated * toInstantiate.GetComponent<RectTransform>().rect.width, this.transform.position.y), Quaternion.identity) as GameObject;
+
+        //parent objects to Board holder to make neater inside unity 
+        instance.transform.SetParent(boardHolder);
+        tilesGenerated++;
     }
 
     Vector3 RandomPosition()
