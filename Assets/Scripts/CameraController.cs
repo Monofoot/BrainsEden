@@ -17,12 +17,19 @@ public class CameraController : MonoBehaviour
         offset = this.transform.position - lookAt.transform.position;    
     }
 
+    private void FixedUpdate()
+    {
+        //Vector3 cameraHell = new Vector3(transform.position.x, transform.position.y - 0.01f);
+
+        //transform.position = cameraHell;
+    } 
+
     private void LateUpdate()
     {
         //Lookat = new transform to lerp towards 
         Vector3 targetPos = lookAt.transform.position + offset; 
         //smooth follow towards new target position
-        this.transform.position = Vector3.Lerp(this.transform.position ,targetPos, smoothSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position ,targetPos, smoothSpeed * Time.deltaTime);
     }
 
 }

@@ -9,15 +9,11 @@ public class playerCollision : MonoBehaviour {
     public float PlayerDelayDuration = 0.2f;
     public float flashSpeed = 5f;
     private bool damaged = false;
-    bool damn = false;
     private int soulCount = 0;
-
-    soulFollow soulPickup;
 
     private void Start()
     {
         rend = GetComponent<SpriteRenderer>();
-        soulPickup = GetComponent<soulFollow>();
     }
 
     private void Update()
