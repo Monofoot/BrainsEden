@@ -7,7 +7,6 @@ public class PickupGenerator : MonoBehaviour {
 
     public GameObject[] pickupTiles;
     public int maxPickupsOnScreen = 4;
-
     private int pickupsOnScreen = 0;
     private Transform boardHolder;
     private Transform gameManager;
@@ -29,15 +28,13 @@ public class PickupGenerator : MonoBehaviour {
     {
         if (pickupsOnScreen < maxPickupsOnScreen)
         {
-            int generatedNumber = Random.Range(0, 3);
-
-            if (generatedNumber == 1)
+            int randomValue = Random.Range(0, 60) ;
+            Debug.Log(randomValue);
+            if (randomValue == 5 || randomValue == 50 )
             {
                 GenerateNewTile();
             }
-        }
-
-        
+        }        
     }
 
     public void GenerateNewTile()
