@@ -35,7 +35,7 @@ public class BackgroundGenerator : MonoBehaviour {
         toInstantiate = backgroundTiles[Random.Range(0, backgroundTiles.Length)];
         //Spawn background tile at an offset from the prevous tile 
 
-         instance = Instantiate(toInstantiate, new Vector3(tilesGenerated * toInstantiate.GetComponent<RectTransform>().rect.width, 0f), Quaternion.identity) as GameObject;
+         instance = Instantiate(toInstantiate, new Vector3(tilesGenerated * toInstantiate.GetComponent<RectTransform>().rect.width, this.transform.position.y), Quaternion.identity) as GameObject;
 
         //parent objects to Board holder to make neater inside unity 
         instance.transform.SetParent(boardHolder);
