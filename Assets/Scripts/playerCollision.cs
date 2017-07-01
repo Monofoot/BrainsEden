@@ -9,8 +9,8 @@ public class playerCollision : MonoBehaviour {
     public float PlayerDelayDuration = 0.2f;
     public float flashSpeed = 5f;
     private bool damaged = false;
-    private Vector3 holdPosition;
-    private float holdX = -0.15f;
+    bool damn = false;
+    private int soulCount = 0;
 
     soulFollow soulPickup;
 
@@ -43,20 +43,21 @@ public class playerCollision : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.tag == "Soul")
-        {
-            GameObject holdSlot = new GameObject("holdSlot");
-            transform.parent = holdSlot.transform;
-            holdPosition = new Vector3(holdX, transform.position.y, transform.position.z);
-            holdSlot.transform.Translate(holdPosition);
-
-            soulPickup.collisionOccur(true, holdSlot);
-        }
-        else if (collision.collider.tag == "Obstacle")
+        if (collision.collider.tag == "Obstacle")
         {
             damaged = true;
             Destroy(collision.gameObject);
             StartCoroutine(delayOnCollision());
         }
+    }
+
+    public int checkSlots()
+    {
+        return soulCount;
+    }
+
+    public void slotFilled()
+    {
+        soulCount++;
     }
 }
