@@ -6,6 +6,15 @@ public class GiveandTake : MonoBehaviour {
 
     [Range(-100,100)]
     public float giveAndTakeMeter = 0f;
+    public float hellRise = 0.08f;
+
+    private void Update()
+    {
+        if(giveAndTakeMeter >= -100)
+        {
+            giveAndTakeMeter -= hellRise;
+        }
+    }
 
     public void addScore(float scoreToAdd)
     {

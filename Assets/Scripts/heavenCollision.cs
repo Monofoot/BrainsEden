@@ -33,6 +33,7 @@ public class heavenCollision : MonoBehaviour {
 
             playerCollideScript.soulCount = 0;
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
