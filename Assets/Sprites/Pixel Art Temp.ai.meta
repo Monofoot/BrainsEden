@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: fe1c81ac5803ba8469da5ed99545e9c2
 timeCreated: 1498914057
+=======
+guid: 1c61e9171c812df4ba40b0488accd8a1
+timeCreated: 1498902623
+>>>>>>> soulPickup
 licenseType: Pro
 DefaultImporter:
   userData: 
