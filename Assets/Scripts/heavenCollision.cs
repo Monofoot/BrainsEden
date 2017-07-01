@@ -28,7 +28,7 @@ public class heavenCollision : MonoBehaviour {
 
             foreach (GameObject soul in souls)
             {
-                Destroy(soul);
+                soul.SetActive(false);
             }
 
             playerCollideScript.soulCount = 0;
