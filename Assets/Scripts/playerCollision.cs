@@ -7,33 +7,24 @@ public class playerCollision : MonoBehaviour {
     public SpriteRenderer rend;
     public bool stop = false;
     public float PlayerDelayDuration = 0.2f;
-    public int timerSeconds = 6;
     public float flashSpeed = 5f;
     private bool damaged = false;
-
-    playerHealth pHealth;
-
-    private void Awake()
-    {
-        pHealth = GetComponent<playerHealth>();
-    }
+    private int soulCount = 0;
 
     private void Start()
     {
         rend = GetComponent<SpriteRenderer>();
-        rend.enabled = true;
     }
 
     private void Update()
     {
         if (damaged)
         {
-
-            rend.color = Color.white;
+            rend.color = Color.red;
         }
         else
         {
-            rend.color = Color.Lerp(rend.color, Color.red, flashSpeed * Time.deltaTime);
+            rend.color = Color.Lerp(rend.color, Color.white, flashSpeed * Time.deltaTime);
         }
         damaged = false;
     }
@@ -51,8 +42,28 @@ public class playerCollision : MonoBehaviour {
         {
             damaged = true;
             Destroy(collision.gameObject);
-            pHealth.TakeDamage(10);
+
+            if(soulCount > 0)
+            {
+                GameObject[] souls = GameObject.FindGameObjectsWithTag("SoulPickedUp");
+
+                foreach(GameObject soul in souls)
+                {
+                    Destroy(soul);
+                }
+            }
+
             StartCoroutine(delayOnCollision());
         }
+    }
+
+    public int checkSlots()
+    {
+        return soulCount;
+    }
+
+    public void slotFilled()
+    {
+        soulCount++;
     }
 }

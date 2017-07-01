@@ -7,6 +7,7 @@ public class BackgroundGenerator : MonoBehaviour {
 
     public GameObject[] backgroundTiles;
     public GameObject[] enemyTiles;
+    public int defaultRenderCount = 5;
 
     private int tilesGenerated = 1;
     private Transform boardHolder;
@@ -23,7 +24,7 @@ public class BackgroundGenerator : MonoBehaviour {
         gameManager = GetComponent<GameManager>().transform;
         boardHolder = new GameObject("Board").transform;
         boardHolder.transform.SetParent(gameManager);
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < defaultRenderCount; i++)
         {
             GenerateNewTile();
         }
