@@ -8,7 +8,6 @@ public class characterMovementLR : MonoBehaviour {
     public float thrust = 0.5f;
     private GameObject playerCollider;
     private playerCollision playerCollScript;
-
     public Vector2 jumpPower = new Vector2(0, 300);
 
     // Use this for initialization
@@ -22,19 +21,24 @@ public class characterMovementLR : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
-        //collision detection, resumes normal movement
+
+
+
+
+        //Collision detection, resumes normal movement when the player collides with an object
         if (playerCollScript.stop)
         {
             return;
         }
 
-        //constant movement to the right
-        if (Input.GetKeyDown("space"))
+
+        //If touch input is detected, jump the character
+        if (Input.GetMouseButton(0) || Input.GetKeyDown("space"))
         {
             rigBod.velocity = Vector2.zero;
             rigBod.AddForce(jumpPower);
         }
-        else
+        else //Else continue on course to the right with momentum of thrust
         {
             rigBod.AddRelativeForce(Vector3.right * thrust);
 
