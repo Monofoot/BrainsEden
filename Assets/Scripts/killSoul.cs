@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class killSoul : MonoBehaviour {
 
+    public PickupGenerator PG;
     public bool seen = false;
+
+    private void Start()
+    {
+        PG = GetComponentInParent<PickupGenerator>();
+    }
 
     private void OnBecameVisible()
     {
@@ -13,6 +19,7 @@ public class killSoul : MonoBehaviour {
 
     private void OnBecameInvisible()
     {
+        
         Destroy(this.gameObject);
     }
 }

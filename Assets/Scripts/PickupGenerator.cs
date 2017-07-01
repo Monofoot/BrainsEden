@@ -33,8 +33,13 @@ public class PickupGenerator : MonoBehaviour {
             if (randomValue == 5 || randomValue == 50 )
             {
                 GenerateNewTile();
+                pickupsOnScreen++;
             }
         }        
+    }
+    public void removePickup()
+    {
+        pickupsOnScreen--;
     }
 
     public void GenerateNewTile()
