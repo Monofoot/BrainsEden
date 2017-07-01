@@ -9,6 +9,8 @@ public class characterMovementLR : MonoBehaviour {
     private GameObject playerCollider;
     private playerCollision playerCollScript;
 
+    public Vector2 jumpPower = new Vector2(0, 300);
+
     // Use this for initialization
     void Start()
     {
@@ -20,11 +22,22 @@ public class characterMovementLR : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
+        //collision detection, resumes normal movement
         if (playerCollScript.stop)
         {
             return;
         }
 
-        rigBod.AddRelativeForce(Vector3.right * thrust);
+        //constant movement to the right
+        if (Input.GetKeyDown("space"))
+        {
+            rigBod.velocity = Vector2.zero;
+            rigBod.AddForce(jumpPower);
+        }
+        else
+        {
+            rigBod.AddRelativeForce(Vector3.right * thrust);
+
+        }
     }
 }
