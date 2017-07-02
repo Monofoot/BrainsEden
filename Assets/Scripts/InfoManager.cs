@@ -5,6 +5,7 @@ using UnityEngine;
 public class InfoManager : MonoBehaviour {
 
     public static float soulsSaved;
+    public static float checkIfSoulsPresent;
     public static InfoManager manager;
 
     GiveandTake gntScript;

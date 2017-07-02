@@ -49,6 +49,8 @@ public class playerCollision : MonoBehaviour {
             rend.color = Color.Lerp(rend.color, Color.white, flashSpeed * Time.deltaTime);
         }
         damaged = false;
+
+        InfoManager.checkIfSoulsPresent = soulCount;
     }
 
     IEnumerator delayOnCollision()
