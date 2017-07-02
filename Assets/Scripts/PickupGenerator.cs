@@ -7,21 +7,25 @@ public class PickupGenerator : MonoBehaviour {
 
     public GameObject[] pickupTiles;
     public int maxPickupsOnScreen = 4;
+    public float spawnOffset = 10f;
+    public Transform cameraOffset;
+
     private int pickupsOnScreen = 0;
     private Transform boardHolder;
     private Transform gameManager;
     private GameObject toInstantiate;
     private GameObject instance;
+    
 
     private List<Vector3> gridPositions = new List<Vector3>();
     private float[] offsets;
 
-    //Create game object that will hold the generated game level
-    void BoardSetup()
+    private void Start()
     {
         gameManager = GetComponent<GameManager>().transform;
         boardHolder = new GameObject("Board").transform;
         boardHolder.transform.SetParent(gameManager);
+       
     }
 
     private void Update()
@@ -29,7 +33,6 @@ public class PickupGenerator : MonoBehaviour {
         if (pickupsOnScreen < maxPickupsOnScreen)
         {
             int randomValue = Random.Range(0, 60) ;
-            Debug.Log(randomValue);
             if (randomValue == 5 || randomValue == 50 )
             {
                 GenerateNewTile();
@@ -39,6 +42,7 @@ public class PickupGenerator : MonoBehaviour {
     }
     public void removePickup()
     {
+        Debug.Log(pickupsOnScreen);
         pickupsOnScreen--;
     }
 
@@ -46,9 +50,10 @@ public class PickupGenerator : MonoBehaviour {
     {
         //Create a random number between 0 and tile size index
         toInstantiate = pickupTiles[Random.Range(0, pickupTiles.Length)];
+        float spawnPosX = cameraOffset.position.x + spawnOffset;
         //Spawn background tile at an offset from the prevous tile 
 
-         instance = Instantiate(toInstantiate, new Vector3(this.transform.position.x , Random.Range(-3,3)), Quaternion.identity) as GameObject;
+         instance = Instantiate(toInstantiate, new Vector3( spawnPosX, Random.Range(-3,3)), Quaternion.identity) as GameObject;
 
         //parent objects to Board holder to make neater inside unity 
         instance.transform.SetParent(boardHolder);
@@ -74,11 +79,4 @@ public class PickupGenerator : MonoBehaviour {
         }
     }
 
-    public void SetupScene(int level)
-    {
-        BoardSetup();
-       // LayoutObjectAtRandom(backgroundTiles, tileCount.minimum, tileCount.maximum);
-        int enemyCount = (int)Mathf.Log(level, 2f);
-       // LayoutObjectAtRandom(enemyTiles, enemyCount, enemyCount);
-    }
 }

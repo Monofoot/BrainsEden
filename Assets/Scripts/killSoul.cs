@@ -19,7 +19,10 @@ public class killSoul : MonoBehaviour {
 
     private void OnBecameInvisible()
     {
-        
-        Destroy(this.gameObject);
+        if (seen)
+        {
+            Destroy(this.gameObject);
+            PG.removePickup();
+        }
     }
 }
