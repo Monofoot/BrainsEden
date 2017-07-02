@@ -8,6 +8,8 @@ public class GiveandTake : MonoBehaviour {
     public float giveAndTakeMeter = 0f;
     public float hellRise = 0.08f;
 
+
+
     IEnumerator increaseAfterMinute()
     {
         yield return new WaitForSeconds(60);
@@ -40,7 +42,10 @@ public class GiveandTake : MonoBehaviour {
 
     public void addScore(float scoreToAdd)
     {
+        Debug.Log("here");
+        Debug.Log(scoreToAdd);
         giveAndTakeMeter += scoreToAdd;
+        Debug.Log(giveAndTakeMeter);
     }
 
     public float getMeter()
