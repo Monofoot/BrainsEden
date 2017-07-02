@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GiveandTake : MonoBehaviour {
@@ -36,7 +37,7 @@ public class GiveandTake : MonoBehaviour {
         }
         else
         {
-            //call end game
+            SceneManager.LoadScene(2);
         }
     }
 
