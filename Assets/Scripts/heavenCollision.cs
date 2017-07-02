@@ -8,14 +8,14 @@ public class heavenCollision : MonoBehaviour {
     private int soulsSaved = 0;
     private bool inTrigger = false;
     private float heavenPush = 0;
-    public GameObject giveAndTakeObject;
+    
 
     GiveandTake gntScript;
 
     private void Start()
     {
+        GameObject giveAndTakeObject = GameObject.FindGameObjectWithTag("GiveAndTake");
         gntScript = giveAndTakeObject.GetComponent<GiveandTake>();
-        
     }
 
     IEnumerator delay()
