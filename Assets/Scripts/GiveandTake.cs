@@ -44,10 +44,10 @@ public class GiveandTake : MonoBehaviour {
     public void addScore(float scoreToAdd)
     {
         InfoManager.soulsSaved += scoreToAdd;
-        scoreToAdd *= 10;
 
-        if(giveAndTakeMeter < 100 && scoreToAdd != 0 && scoreToAdd <= 3 && scoreToAdd > 0)
+        if(giveAndTakeMeter < 100 && scoreToAdd <= 3 && scoreToAdd > 0)
         {
+            scoreToAdd *= 10;
             giveAndTakeMeter += scoreToAdd;
         }
         

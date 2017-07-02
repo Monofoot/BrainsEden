@@ -70,10 +70,12 @@ public class playerCollision : MonoBehaviour {
             {
                 GameObject[] souls = GameObject.FindGameObjectsWithTag("SoulPickedUp");
 
-                foreach(GameObject soul in souls)
+                for (int i = 0; i < souls.Length; i++)
                 {
-                    Destroy(soul);
+                    souls[i].SetActive(false);
                 }
+
+                soulCount = 0;
             }
             else
             {
