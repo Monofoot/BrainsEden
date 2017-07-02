@@ -49,6 +49,8 @@ public class playerCollision : MonoBehaviour {
             rend.color = Color.Lerp(rend.color, Color.white, flashSpeed * Time.deltaTime);
         }
         damaged = false;
+
+        InfoManager.checkIfSoulsPresent = soulCount;
     }
 
     IEnumerator delayOnCollision()
@@ -68,10 +70,12 @@ public class playerCollision : MonoBehaviour {
             {
                 GameObject[] souls = GameObject.FindGameObjectsWithTag("SoulPickedUp");
 
-                foreach(GameObject soul in souls)
+                for (int i = 0; i < souls.Length; i++)
                 {
-                    Destroy(soul);
+                    souls[i].SetActive(false);
                 }
+
+                soulCount = 0;
             }
             else
             {

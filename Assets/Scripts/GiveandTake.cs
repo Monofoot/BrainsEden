@@ -7,20 +7,20 @@ public class GiveandTake : MonoBehaviour {
 
     [Range(-100,100)]
     public float giveAndTakeMeter = 0f;
-    public float hellRise = 0.08f;
+    public float hellRise = 0.1f;
     private float totalSouls = 0;
 
 
     IEnumerator increaseAfterMinute()
     {
         yield return new WaitForSeconds(60);
-        hellRise = 0.12f;
+        hellRise = 0.14f;
     }
 
     IEnumerator increaseAfter2Minutes()
     {
         yield return new WaitForSeconds(120);
-        hellRise = 0.18f;
+        hellRise = 0.2f;
     }
 
     private void Awake()
@@ -44,8 +44,13 @@ public class GiveandTake : MonoBehaviour {
     public void addScore(float scoreToAdd)
     {
         InfoManager.soulsSaved += scoreToAdd;
-        scoreToAdd += 10;
-        giveAndTakeMeter += scoreToAdd;
+
+        if(giveAndTakeMeter < 100 && scoreToAdd <= 3 && scoreToAdd > 0)
+        {
+            scoreToAdd *= 10;
+            giveAndTakeMeter += scoreToAdd;
+        }
+        
     }
 
     public float getMeter()

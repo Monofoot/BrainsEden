@@ -21,6 +21,17 @@ public class characterMovementLR : MonoBehaviour
 
     }
 
+
+    private void Update()
+    {
+        //If touch input is detected, jump the character
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown("space"))
+        {
+            //rotate by x degrees
+            rigBod.AddForce(jumpPower);
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -39,13 +50,6 @@ public class characterMovementLR : MonoBehaviour
 
         rigBod.AddRelativeForce(Vector2.right * thrust);
         Vector2 velocity = rigBod.velocity;
-        //If touch input is detected, jump the character
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown("space"))
-        {
-            //rotate by x degrees
-            rigBod.AddForce(jumpPower);
-        }
-
 
     }
 }
