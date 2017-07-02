@@ -9,6 +9,8 @@ public class playerHealth : MonoBehaviour {
     public int currentHealth;
     public Slider healthSlider;
 
+    public AudioSource deathAudio;
+
     private void Awake()
     {
         currentHealth = startHealth;
@@ -27,7 +29,7 @@ public class playerHealth : MonoBehaviour {
 
         if (currentHealth <= 0)
         {
-            //end game
+            deathAudio.Play();
         }
     }
 }

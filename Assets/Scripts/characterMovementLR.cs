@@ -11,10 +11,12 @@ public class characterMovementLR : MonoBehaviour
     private GameObject playerCollider;
     private playerCollision playerCollScript;
     public Vector2 jumpPower = new Vector2(0, 300);
+    public AudioSource jumpSound;
 
     // Use this for initialization
     void Start()
     {
+        
         rigBod = GetComponent<Rigidbody2D>();
         playerCollider = GameObject.Find("Player");
         playerCollScript = playerCollider.GetComponent<playerCollision>();
@@ -27,6 +29,8 @@ public class characterMovementLR : MonoBehaviour
         //If touch input is detected, jump the character
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown("space"))
         {
+
+            jumpSound.Play();
             //rotate by x degrees
             rigBod.AddForce(jumpPower);
         }

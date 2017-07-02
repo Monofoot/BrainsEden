@@ -17,8 +17,12 @@ public class playerCollision : MonoBehaviour {
     public GameObject soul2;
     public GameObject soul3;
 
+    public AudioSource pickup;
+    public AudioSource deathAudio;
+    
     private void Start()
     {
+
         rend = GetComponent<SpriteRenderer>();
     }
 
@@ -79,6 +83,7 @@ public class playerCollision : MonoBehaviour {
             }
             else
             {
+                deathAudio.Play();
                 SceneManager.LoadScene(2);
             }
             
@@ -91,6 +96,7 @@ public class playerCollision : MonoBehaviour {
         if (collision.tag == "Soul")
         {
             collisionFound = true;
+            pickup.Play();
             slotFilled();
 
             Destroy(collision.gameObject);
