@@ -9,12 +9,15 @@ public class PickupGenerator : MonoBehaviour {
     public int maxPickupsOnScreen = 4;
     public float spawnOffset = 10f;
     public Transform cameraOffset;
+    public float minRange = -3;
+    public float maxRange = 3;
 
     private int pickupsOnScreen = 0;
     private Transform boardHolder;
     private Transform gameManager;
     private GameObject toInstantiate;
     private GameObject instance;
+    
     
 
     private List<Vector3> gridPositions = new List<Vector3>();
@@ -53,7 +56,7 @@ public class PickupGenerator : MonoBehaviour {
         float spawnPosX = cameraOffset.position.x + spawnOffset;
         //Spawn background tile at an offset from the prevous tile 
 
-         instance = Instantiate(toInstantiate, new Vector3( spawnPosX, Random.Range(-3,3)), Quaternion.identity) as GameObject;
+         instance = Instantiate(toInstantiate, new Vector3( spawnPosX, Random.Range(minRange,maxRange)), Quaternion.identity) as GameObject;
 
         //parent objects to Board holder to make neater inside unity 
         instance.transform.SetParent(boardHolder);
