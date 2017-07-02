@@ -5,7 +5,16 @@ using UnityEngine;
 public class heavenCollision : MonoBehaviour {
 
     private float delayDuration = 3.0f;
+    private int soulsSaved = 0;
     private bool inTrigger = false;
+    public GameObject playerGameObject;
+
+    playerCollision playerCollideScript;
+
+    private void Start()
+    {
+        playerCollideScript = playerGameObject.GetComponent<playerCollision>();
+    }
 
     IEnumerator delay()
     {
@@ -15,11 +24,16 @@ public class heavenCollision : MonoBehaviour {
         {
             GameObject[] souls = GameObject.FindGameObjectsWithTag("SoulPickedUp");
 
+            soulsSaved += souls.Length;
+
             foreach (GameObject soul in souls)
             {
-                Destroy(soul);
+                soul.SetActive(false);
             }
+
+            playerCollideScript.soulCount = 0;
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -45,13 +45,5 @@ public class soulFollow : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Player")
-        {
-            collisionFound = true;
-            playerCollideScript.slotFilled();
-            soulCount = playerCollideScript.checkSlots();
-        }
-    }
+    
 }
