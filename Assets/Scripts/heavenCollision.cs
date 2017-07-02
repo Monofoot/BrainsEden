@@ -5,7 +5,6 @@ using UnityEngine;
 public class heavenCollision : MonoBehaviour {
 
     private float delayDuration = 3.0f;
-    private int soulsSaved = 0;
     private bool inTrigger = false;
     private float heavenPush = 0;
     
@@ -38,16 +37,12 @@ public class heavenCollision : MonoBehaviour {
             GameObject[] souls = GameObject.FindGameObjectsWithTag("SoulPickedUp");
 
             heavenPush = souls.Length;
-            soulsSaved += souls.Length;
 
             for(int i = 0; i < souls.Length; i++)
             {
                 souls[i].SetActive(false);
             }
 
-            Debug.Log(heavenPush);
-            heavenPush *= 10;
-            Debug.Log(heavenPush);
             gntScript.addScore(heavenPush);
         }
     }

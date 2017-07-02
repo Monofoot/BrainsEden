@@ -63,7 +63,6 @@ public class playerCollision : MonoBehaviour {
         if (collision.collider.tag == "Obstacle")
         {
             damaged = true;
-            Destroy(collision.gameObject);
 
             if(soulCount > 0)
             {
@@ -78,7 +77,7 @@ public class playerCollision : MonoBehaviour {
             {
                 SceneManager.LoadScene(2);
             }
-
+            
             StartCoroutine(delayOnCollision());
         }
     }

@@ -7,7 +7,7 @@ public class GiveandTake : MonoBehaviour {
     [Range(-100,100)]
     public float giveAndTakeMeter = 0f;
     public float hellRise = 0.08f;
-
+    private float totalSouls = 0;
 
 
     IEnumerator increaseAfterMinute()
@@ -42,14 +42,18 @@ public class GiveandTake : MonoBehaviour {
 
     public void addScore(float scoreToAdd)
     {
-        Debug.Log("here");
-        Debug.Log(scoreToAdd);
+        InfoManager.soulsSaved += scoreToAdd;
+        scoreToAdd += 10;
         giveAndTakeMeter += scoreToAdd;
-        Debug.Log(giveAndTakeMeter);
     }
 
     public float getMeter()
     {
         return giveAndTakeMeter;
+    }
+
+    public float getSoulsSaved()
+    {
+        return totalSouls;
     }
 }
