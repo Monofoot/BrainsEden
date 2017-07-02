@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 2099af86d9800a447b12df745c737622
-timeCreated: 1498985489
-=======
-guid: 88da631b088820440bfc1700cc197642
-timeCreated: 1498985247
->>>>>>> Obstacles-Animations
-licenseType: Pro
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 4
@@ -32,11 +25,7 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-<<<<<<< HEAD
-    filterMode: -1
-=======
     filterMode: 0
->>>>>>> Obstacles-Animations
     aniso: -1
     mipBias: -1
     wrapMode: 1
@@ -67,8 +56,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<< HEAD
-=======
   - buildTarget: Standalone
     maxTextureSize: 2048
     textureFormat: -1
@@ -133,7 +120,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
->>>>>>> Obstacles-Animations
   spriteSheet:
     serializedVersion: 2
     sprites: []

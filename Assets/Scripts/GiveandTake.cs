@@ -27,17 +27,18 @@ public class GiveandTake : MonoBehaviour {
     {
         StartCoroutine(increaseAfterMinute());
         StartCoroutine(increaseAfter2Minutes());
+        InfoManager.soulsSaved = 0;
     }
 
     private void Update()
     {
         if(giveAndTakeMeter > -100)
         {
-            giveAndTakeMeter -= hellRise;
+            //giveAndTakeMeter -= hellRise;
         }
         else
         {
-            SceneManager.LoadScene(2);
+            //SceneManager.LoadScene(2);
         }
     }
 
@@ -47,8 +48,14 @@ public class GiveandTake : MonoBehaviour {
 
         if(giveAndTakeMeter < 100 && scoreToAdd <= 3 && scoreToAdd > 0)
         {
-            scoreToAdd *= 10;
-            giveAndTakeMeter += scoreToAdd;
+            scoreToAdd /= 10;
+
+            GameObject[] hell = GameObject.FindGameObjectsWithTag("Hell");
+
+            for (int i = 0; i < hell.Length; i++)
+            {
+                hell[i].transform.position = new Vector2(hell[i].transform.position.x, hell[i].transform.position.y - scoreToAdd);
+            }
         }
         
     }
