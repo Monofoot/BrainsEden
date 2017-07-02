@@ -13,7 +13,5 @@ public class SoulsSaved : MonoBehaviour {
         score = InfoManager.soulsSaved;
 
         Souls_Saved.text = "You Saved " + score + " Souls";
-
-        InfoManager.soulsSaved = 0;
     }
 }
