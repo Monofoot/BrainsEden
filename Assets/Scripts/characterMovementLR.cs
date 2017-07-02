@@ -18,11 +18,27 @@ public class characterMovementLR : MonoBehaviour
         rigBod = GetComponent<Rigidbody2D>();
         playerCollider = GameObject.Find("Player");
         playerCollScript = playerCollider.GetComponent<playerCollision>();
+
+    }
+
+
+    private void Update()
+    {
+        //If touch input is detected, jump the character
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown("space"))
+        {
+            //rotate by x degrees
+            rigBod.AddForce(jumpPower);
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        //get horizontal and vertical axis
+        float moveHorizontal = Input.GetAxisRaw("Horizontal");
+        float moveVertical = Input.GetAxisRaw("Vertical");
+
         //Clamps the max velocity by taking the rigid body and the float max velocity
         rigBod.velocity = Vector2.ClampMagnitude(rigBod.velocity, maxVelocity);
 
@@ -34,19 +50,6 @@ public class characterMovementLR : MonoBehaviour
 
         rigBod.AddRelativeForce(Vector2.right * thrust);
         Vector2 velocity = rigBod.velocity;
-        //If touch input is detected, jump the character
-        if (Input.GetMouseButton(0) || Input.GetKeyDown("space"))
-        {
-            rigBod.AddForce(jumpPower);
-
-        }
-
 
     }
-    
-
-
-
-
-
 }

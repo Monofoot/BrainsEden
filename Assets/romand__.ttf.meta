@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 9b275aa2e99bbe74ebffe312e15a7957
+timeCreated: 1498995394
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: RomanD
+  fontNames:
+  - RomanD
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 9ca47277bca57f54182b7e946deea147, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
