@@ -7,7 +7,7 @@ public class heavenCollision : MonoBehaviour {
     private float delayDuration = 3.0f;
     private bool inTrigger = false;
     private float heavenPush = 0;
-    
+    public float flashSpeed = 5f;
 
     GiveandTake gntScript;
 
@@ -17,26 +17,26 @@ public class heavenCollision : MonoBehaviour {
         gntScript = giveAndTakeObject.GetComponent<GiveandTake>();
     }
 
-    IEnumerator delay()
-    {
-        inTrigger = true;
-        yield return new WaitForSeconds(delayDuration);
-        if (inTrigger)
-        {
-            
-        }
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            StartCoroutine(delay());
-            collision.gameObject.GetComponent<playerCollision>().soulCount = 0;
+            if(collision.gameObject.GetComponent<playerCollision>().soulCount > 0)
+            {
+                collision.gameObject.GetComponent<playerCollision>().give = true;
+                collision.gameObject.GetComponent<playerCollision>().soulCount = 0;
+            }
+            
+            
 
             GameObject[] souls = GameObject.FindGameObjectsWithTag("SoulPickedUp");
 
             heavenPush = souls.Length;
+
+            if(souls.Length > 0)
+            {
+                
+            }
 
             for(int i = 0; i < souls.Length; i++)
             {
@@ -45,10 +45,5 @@ public class heavenCollision : MonoBehaviour {
 
             gntScript.addScore(heavenPush);
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        inTrigger = false;
     }
 }
